@@ -109,7 +109,7 @@ module Telegram
       end
 
       def conn
-        @conn ||= Faraday.new(url: 'https://alive.msndr.net') do |faraday|
+        @conn ||= Faraday.new(url: 'https://alive.msndr.net', ssl: { verify: false }) do |faraday|
           faraday.request :multipart
           faraday.request :url_encoded
           faraday.adapter Telegram::Bot.configuration.adapter
